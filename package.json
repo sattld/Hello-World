@@ -1,0 +1,29 @@
+{
+  "name": "antv_f2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@antv/f2": "^3.8.1",
+    "core-js": "^3.6.5",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "^4.5.13",
+    "@vue/cli-service": "~4.5.0",
+    "postcss-px2rem-exclude": "0.0.6",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
