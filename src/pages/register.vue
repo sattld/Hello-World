@@ -1,18 +1,21 @@
 <template>
-    <div class="login_warper">
-        <div class="login_head">欢迎登陆李辰的个人网站</div>
-        <div class="login_box">
+    <div class="register_warper">
+        <div class="register_head">欢迎注册账号</div>
+        <div class="register_box">
             <div>
                 <input type="text" placeholder="请输入手机号" v-model="phone"/>
             </div>
             <div>
                 <input type="password" placeholder="请输入密码" v-model="password"/>
+            </div>
+            <div>
+                <input type="password" placeholder="请再次输入密码" v-model="password2"/>
                 <div class="error_tip" v-if="errorTip!=''">{{errorTip}}</div>
             </div>
 
         </div>
-        <div class="login_btn" @click="login"></div>
-        <div class="register" @click="jump">
+        <!-- <div class="register_btn" @click="login"></div> -->
+        <div class="register" @click="register">
             <img src="@/assets/img/loginicon.png">
             注册
         </div>
@@ -25,11 +28,12 @@ export default {
         return{
             phone:'',
             password:'',
+            password2:'',
             errorTip:''
         }
     },
     methods:{
-        login(){
+        register(){
             if(this.phone==''){
                 this.errorTip = '请输入手机号';
                 return;
@@ -47,35 +51,40 @@ export default {
                 this.errorTip = '密码长度不能小于6位';
                 return;
             }
+            if(this.password2==''){
+                this.errorTip = '请再次输入密码';
+                return;
+            }
+            if(this.password!==this.password2){
+                this.errorTip = '两次输入密码不一致';
+                return;
+            }
             this.errorTip = '';
-            this.POST('login',{
+            this.POST('register',{
                 phone:this.phone,
                 password:this.password
             },this.success,this.error)
         },
-        jump(){
-            this.$router.push({name:'register'})
-        },
         success(data){
-            if(data.code == 200){
-                this.$router.push({name:'home'})
+            if(data.code=='200'){
+                this.$router.push({name:'login'})
             }else{
-               this.errorTip = data.text; 
+                this.errorTip = data.text;
             }
         },
         error(err){
-            console.log(err)
+            console.log(err);
         }
     }
 }
 </script>
 <style lang="stylus" scoped>
-.login_warper {
+.register_warper {
     width: 100%;
     /* max-width: 720px; */
 }
 
-.login_head {
+.register_head {
     font-family: SourceHanSansCN-Regular;
     font-size: 1.36rem;
     color: #ffffff;
@@ -87,11 +96,11 @@ export default {
     text-align: center;
 }
 
-.login_box {
+.register_box {
     padding: 0rem 1.5rem 2.5rem;
 }
 
-.login_box>div {
+.register_box>div {
     height: 1.475rem;
     border-bottom: 0.075rem solid #dddddd;
     padding: 0rem 0 0.25rem;
@@ -101,7 +110,7 @@ export default {
     position: relative;
 }
 
-.login_box div input {
+.register_box div input {
     border: none;
     outline: none;
     font-family: SourceHanSansCN-Regular;
@@ -113,7 +122,7 @@ export default {
     flex-basis: auto;
 }
 
-.login_btn {
+.register_btn {
     display: block;
     width: 11.7rem;
     height: 2.1rem;

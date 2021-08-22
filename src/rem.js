@@ -1,7 +1,7 @@
 export default function setRemInit() {
     // postcss-px2rem的内容
     // 基准大小
-    const baseSize = 100;
+    const baseSize = 40;
     // 设置 rem 函数
     function setRem() {
       // 当前页面宽度相对于 1920 px(设计稿尺寸)的缩放比例，可根据自己需要修改。

@@ -1,10 +1,15 @@
 <template>
-  <div id="app">
+  <div id="app" style="max-width:720px;margin:0 auto;">
     <router-view/>
   </div>
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
